@@ -11,12 +11,7 @@ module.exports = function(app) {
       formioComponentsProvider.register('radio', {
         title: 'Radio',
         template: 'formio/components/radio.html',
-        tableView: function(data, component) {
-          for (var i in component.values) {
-            if (component.values[i].value === data) {
-              return component.values[i].label;
-            }
-          }
+        tableView: function(data) {
           return data;
         },
         controller: [
