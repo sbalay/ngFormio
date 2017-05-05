@@ -46,7 +46,7 @@ module.exports = function(app) {
 
             var initialized = $q.defer();
             initialized.promise.then(function() {
-              $scope.$emit('selectLoaded', $scope.component);
+              $scope.$emit('datasourceLoaded', $scope.component);
             });
 
             var selectValues = $scope.component.selectValues;
@@ -88,12 +88,12 @@ module.exports = function(app) {
                 $timeout(function() {
                   $scope.data[settings.key] = tempData;
                   refreshing = false;
-                  $scope.$emit('selectLoaded', $scope.component);
+                  $scope.$emit('datasourceLoaded', $scope.component);
                 });
               }
               else {
                 refreshing = false;
-                $scope.$emit('selectLoaded', $scope.component);
+                $scope.$emit('datasourceLoaded', $scope.component);
               }
             };
 

@@ -400,7 +400,7 @@ module.exports = [
                   }
                   else if ($scope.component.dataSrc === 'url' || $scope.component.dataSrc === 'resource') {
                     // Wait until loading is done.
-                    $scope.$on('selectLoaded', function() {
+                    $scope.$on('datasourceLoaded', function() {
                       $scope.data[$scope.component.key] = pluckItems(value, $scope.selectItems);
                     });
                   }
