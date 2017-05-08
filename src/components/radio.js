@@ -78,7 +78,7 @@ module.exports = function(app) {
               }
               refreshing = true;
               var tempData = $scope.data[settings.key];
-              $scope.data[settings.key] = settings.multiple ? [] : '';
+              $scope.data[settings.key] = '';
               if (!settings.clearOnRefresh) {
                 $timeout(function() {
                   $scope.data[settings.key] = tempData;

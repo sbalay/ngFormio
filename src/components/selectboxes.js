@@ -100,9 +100,7 @@ module.exports = function(app) {
                 return data;
             }
           };
-          var result = component.multiple && Array.isArray(data)
-            ? data.map(getItem)
-            : getItem(data);
+          var result = Array.isArray(data) ? data.map(getItem) : getItem(data);
           return Object.keys(result).join(', ');
         },
         controller: [
@@ -169,7 +167,7 @@ module.exports = function(app) {
               }
               refreshing = true;
               var tempData = $scope.data[settings.key];
-              $scope.data[settings.key] = settings.multiple ? [] : '';
+              $scope.data[settings.key] = '';
               if (!settings.clearOnRefresh) {
                 $timeout(function() {
                   $scope.data[settings.key] = tempData;
