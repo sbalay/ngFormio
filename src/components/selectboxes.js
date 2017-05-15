@@ -22,6 +22,15 @@ module.exports = function(app) {
       link: function($scope, el, attrs, ngModel) {
         if ($scope.builder) return;
         // Initialize model
+
+        $scope.getItemValue = function(item) {
+          return item[$scope.component.valueProperty] || item.value || item;
+        };
+
+        $scope.getItemLabel = function(item) {
+          return item[$scope.component.labelProperty] || item.label || item;
+        };
+
         var model = {};
         angular.forEach($scope.selectItems, function(item) {
           var val = $scope.getItemValue(item);
@@ -33,13 +42,6 @@ module.exports = function(app) {
         // FA-921 - Attempt to load a current model, if present before the defaults.
         ngModel.$setViewValue($scope.model || model);
 
-        $scope.getItemValue = function(item) {
-          return item[$scope.component.valueProperty] || item.value || item;
-        };
-
-        $scope.getItemLabel = function(item) {
-          return item[$scope.component.labelProperty] || item.label || item;
-        };
 
         ngModel.$setPristine(true);
         ngModel.$isEmpty = function(value) {
